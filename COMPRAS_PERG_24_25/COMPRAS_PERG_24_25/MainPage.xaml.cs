@@ -6,7 +6,7 @@ namespace COMPRAS_PERG_24_25
     public partial class MainPage : ContentPage
     {
         double precioBruto = 0;
-        double precio, IR = 1.50, Bolsagro = 0.15, PTO = 0.10, FTDC, Reintegro = 1.5;
+        double precio, IR = 0.015, Bolsagro = 0.0015, PTO = 0.001, FTDC, Reintegro = 0.015;
 
 
         public MainPage()
@@ -17,12 +17,13 @@ namespace COMPRAS_PERG_24_25
         private void BtnCalcular_Clicked(object sender, System.EventArgs e)
         {
             CalcularPrecioBruto();
+            CalcularFTDC();
             Calculos();
         }
 
         private void BtnBorrar_Clicked(object sender, System.EventArgs e)
         {
-
+            Limpiar();
         }
         private void crearlista()
         {
@@ -56,7 +57,7 @@ namespace COMPRAS_PERG_24_25
             string productoSeleccionado = PProducto.SelectedItem?.ToString();
 
             // Verificar si los campos de precio y incentivo tienen valores válidos
-            if (double.TryParse(TxtPrecio.Text, out precio) && double.TryParse(TxtIncent.Text, out double incentivo))
+            if (double.TryParse(TxtPrecio.Text, out precio) && double.TryParse(TxtIncent.Text, out double incentivo) && double.TryParse(TxtDeduc.Text, out double Deduccion))
             {
 
                 // Verificar si el producto pertenece al primer grupo (PERGAMINO MOJADO 1RA, 2DA, BROZA)
@@ -74,7 +75,7 @@ namespace COMPRAS_PERG_24_25
                          productoSeleccionado == "PERGAMINO MOJADO 1RA DAÑO" ||
                          productoSeleccionado == "PERGAMINO MOJADO 2DA DAÑO")
                 {
-                    precioBruto = precio - (incentivo / 46);
+                    precioBruto = precio - (Deduccion / 46);
                 }
                 // En cualquier otro caso, el Precio Bruto será igual a TxtPrecio
                 else
@@ -83,7 +84,7 @@ namespace COMPRAS_PERG_24_25
                 }
 
                 // Mostrar el resultado (puedes actualizar un Label o un Entry para mostrar el precio bruto)
-                LblPrecioBruto.Text = $"El Precio Bruto es: {precioBruto}";
+                LblPrecioBruto.Text = precioBruto.ToString("F2");
             }
             else
             {
@@ -92,6 +93,10 @@ namespace COMPRAS_PERG_24_25
             }
         }
         private void TxtRedimiento_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CalcularFTDC();
+        }
+        private void CalcularFTDC()
         {
             if (double.TryParse(TxtRedimiento.Text, out double rendimiento))
             {
@@ -104,7 +109,6 @@ namespace COMPRAS_PERG_24_25
                 FTDC = 0;
             }
         }
-
         private void Calculos()
         {
             // Declarar variables
@@ -118,7 +122,7 @@ namespace COMPRAS_PERG_24_25
                 double.TryParse(TxtSeguro.Text, out Seguro))
             {
                 // Cálculo del Impuesto basado en el precio y precioBruto (asumiendo que ya existen)
-                Imp = precio * precioBruto;
+                Imp = pesoNeto * precioBruto;
 
                 // Cálculos secundarios
                 ir = Imp * IR;
@@ -128,10 +132,10 @@ namespace COMPRAS_PERG_24_25
                 reintegro = Imp * Reintegro;
 
                 // Calcular el Subtotal
-                double Subtotal = ir + bolsagro + pto + ftdc + Principal + Interes + GTOS + Seguro + reintegro;
+                double Subtotal = ir + bolsagro + pto + ftdc + Principal + Interes + GTOS + Seguro;
 
                 // Calcular el Neto Pagado
-                NetoPagado = Imp - Subtotal;
+                NetoPagado = (Imp - Subtotal) + reintegro;
 
                 // Actualizar los Labels con los resultados
                 LblImp.Text = Imp.ToString("F2");             // Formateo con dos decimales
@@ -140,7 +144,7 @@ namespace COMPRAS_PERG_24_25
                 LblPto.Text = pto.ToString("F2");
                 LblFTDC.Text = ftdc.ToString("F2");
                 LblReintegro.Text = reintegro.ToString("F2");
-                LblNetoPagado.Text = NetoPagado.ToString("F2");
+                LblNetoPagado.Text = NetoPagado.ToString("N2");
             }
             else
             {
@@ -151,7 +155,23 @@ namespace COMPRAS_PERG_24_25
                 LblImp.Text = LblIR.Text = LblBolsagro.Text = LblPto.Text = LblFTDC.Text = LblReintegro.Text = LblNetoPagado.Text = "";
             }
         }
-
+        private void Limpiar()
+        {
+            TxtPesoNeto.Text = "";
+            TxtPrecio.Text = "";
+            LblPrecioBruto.Text = "";
+            LblImp.Text = "";
+            LblIR.Text = "";
+            LblBolsagro.Text = "";
+            LblPto.Text = "";
+            LblFTDC.Text = "";
+            TxtPrincipal.Text = "0";
+            TxtInteres.Text = "0";
+            TxtGtosLegales.Text = "0";
+            TxtSeguro.Text = "0";
+            LblReintegro.Text = "";
+            LblNetoPagado.Text = "";
+        }
 
     }
 }

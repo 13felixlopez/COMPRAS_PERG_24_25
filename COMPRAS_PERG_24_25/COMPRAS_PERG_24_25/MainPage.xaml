@@ -4,24 +4,83 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Grid>
-        <ScrollView>
-            <Grid BackgroundColor="Beige" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,AUTO">
-                <Grid Grid.Row="3" RowDefinitions="*,Auto">
+    <Grid RowDefinitions="*,60">
+        <ScrollView Margin="5,0">
+            <Grid
+                BackgroundColor="Beige"
+                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,AUTO"
+                RowSpacing="0">
+                <Grid BackgroundColor="LightBlue" RowDefinitions="*,Auto">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="RENDIMIENTO:"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Entry
+                        x:Name="TxtRedimiento"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Keyboard="Numeric"
+                        Text="0,44"
+                        TextChanged="TxtRedimiento_TextChanged" />
+                </Grid>
+                <Grid
+                    Grid.Row="1"
+                    BackgroundColor="LightBlue"
+                    RowDefinitions="*,Auto">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="INCENT X AGUA:"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Entry
+                        x:Name="TxtIncent"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Keyboard="Numeric"
+                        Text="100" />
+                </Grid>
+                <Grid
+                    Grid.Row="2"
+                    BackgroundColor="LightBlue"
+                    RowDefinitions="*,Auto">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Text="DEDUC X DAÑO:"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+                    <Entry
+                        x:Name="TxtDeduc"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Keyboard="Numeric"
+                        Text="250" />
+                </Grid>
+                <Grid Grid.Row="3" RowDefinitions="Auto,Auto">
                     <Label
                         Margin="10"
                         FontAttributes="Bold"
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="PRODUCTO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Picker
                         x:Name="PProducto"
                         Title="Seleccione un producto"
                         Grid.Column="1"
-                        Margin="10"
+                        Margin="-50,10,10,10"
                         FontAttributes="Bold"
-                        FontSize="18" />
+                        FontSize="15" />
                 </Grid>
                 <Grid Grid.Row="4" RowDefinitions="*,auto">
                     <Label
@@ -30,7 +89,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="PESO NETO KG:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Entry
                         x:Name="TxtPesoNeto"
                         Grid.Column="1"
@@ -46,63 +106,10 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="PRECIO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Entry
                         x:Name="TxtPrecio"
-                        Grid.Column="1"
-                        Margin="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        Keyboard="Numeric" />
-                </Grid>
-                <Grid BackgroundColor="LightBlue" RowDefinitions="*,Auto">
-                    <Label
-                        Margin="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Text="RENDIMIENTO:"
-                        TextColor="Black" />
-                    <Entry
-                        x:Name="TxtRedimiento"
-                        Grid.Column="1"
-                        Margin="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        Keyboard="Numeric" TextChanged="TxtRedimiento_TextChanged"/>
-                </Grid>
-                <Grid
-                    Grid.Row="1"
-                    BackgroundColor="LightBlue"
-                    RowDefinitions="*,Auto">
-                    <Label
-                        Margin="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Text="INCENT X AGUA:"
-                        TextColor="Black" />
-                    <Entry
-                        x:Name="TxtIncent"
-                        Grid.Column="1"
-                        Margin="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        Keyboard="Numeric" />
-                </Grid>
-                <Grid
-                    Grid.Row="2"
-                    BackgroundColor="LightBlue"
-                    RowDefinitions="*,Auto">
-                    <Label
-                        Margin="10"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Text="DEDUC X DAÑO:"
-                        TextColor="Black" />
-                    <Entry
-                        x:Name="TxtDeduc"
                         Grid.Column="1"
                         Margin="10"
                         FontAttributes="Bold"
@@ -116,7 +123,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="PRECIO BRUTO KG:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblPrecioBruto"
                         Grid.Column="1"
@@ -132,7 +140,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="IMP. BRUTO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblImp"
                         Grid.Column="1"
@@ -148,7 +157,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="IR:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblIR"
                         Grid.Column="1"
@@ -164,7 +174,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="BOLSAGRO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblBolsagro"
                         Grid.Column="1"
@@ -180,7 +191,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="PTO DE BOLSA:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblPto"
                         Grid.Column="1"
@@ -196,7 +208,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="FTDC:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblFTDC"
                         Grid.Column="1"
@@ -215,14 +228,16 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="PRINCIPAL:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Entry
                         x:Name="TxtPrincipal"
                         Grid.Column="1"
                         Margin="10"
                         FontAttributes="Bold"
                         FontSize="18"
-                        Keyboard="Numeric" />
+                        Keyboard="Numeric"
+                        Text="0" />
                 </Grid>
                 <Grid
                     Grid.Row="13"
@@ -234,14 +249,16 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="INTERESES:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Entry
                         x:Name="TxtInteres"
                         Grid.Column="1"
                         Margin="10"
                         FontAttributes="Bold"
                         FontSize="18"
-                        Keyboard="Numeric" />
+                        Keyboard="Numeric"
+                        Text="0" />
                 </Grid>
                 <Grid
                     Grid.Row="14"
@@ -253,14 +270,16 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="GTOS LEGALES:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Entry
                         x:Name="TxtGtosLegales"
                         Grid.Column="1"
                         Margin="10"
                         FontAttributes="Bold"
                         FontSize="18"
-                        Keyboard="Numeric" />
+                        Keyboard="Numeric"
+                        Text="0" />
                 </Grid>
                 <Grid
                     Grid.Row="15"
@@ -272,14 +291,16 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="SEGURO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Entry
                         x:Name="TxtSeguro"
                         Grid.Column="1"
                         Margin="10"
                         FontAttributes="Bold"
                         FontSize="18"
-                        Keyboard="Numeric" />
+                        Keyboard="Numeric"
+                        Text="0" />
                 </Grid>
                 <Grid Grid.Row="16" RowDefinitions="*,Auto">
                     <Label
@@ -288,7 +309,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="REINTEGRO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblReintegro"
                         Grid.Column="1"
@@ -304,7 +326,8 @@
                         FontSize="18"
                         HorizontalOptions="Center"
                         Text="NETO PAGADO:"
-                        TextColor="Black" />
+                        TextColor="Black"
+                        VerticalOptions="Center" />
                     <Label
                         x:Name="LblNetoPagado"
                         Grid.Column="1"
@@ -313,36 +336,43 @@
                         FontSize="18"
                         Text="--" />
                 </Grid>
-                <Grid Grid.Row="18" RowDefinitions="*,Auto">
-                    <Button
-                        x:Name="BtnCalcular"
-                        Margin="10"
-                        BackgroundColor="Green"
-                        BorderColor="Black"
-                        BorderWidth="2"
-                        CornerRadius="15"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        HorizontalOptions="Center"
-                        Text="Calcular:"
-                        TextColor="White" 
-                        Clicked="BtnCalcular_Clicked"/>
-                    <Button
-                        x:Name="BtnBorrar"
-                        Grid.Column="1"
-                        Margin="10"
-                        BackgroundColor="Red"
-                        BorderColor="Black"
-                        BorderWidth="2"
-                        CornerRadius="15"
-                        FontAttributes="Bold"
-                        FontSize="18"
-                        Text="Borrar"
-                        TextColor="White" 
-                        Clicked="BtnBorrar_Clicked"/>
-                </Grid>
             </Grid>
         </ScrollView>
+        <Grid
+            Grid.Row="1"
+            Margin="5"
+            Padding="0,-40"
+            ColumnDefinitions="*,*">
+            <Button
+                x:Name="BtnCalcular"
+                BackgroundColor="Green"
+                BorderColor="Black"
+                BorderWidth="2"
+                Clicked="BtnCalcular_Clicked"
+                CornerRadius="15"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="Calcular"
+                TextColor="White"
+                VerticalOptions="Center"
+                Padding="50,0"/>
+            <Button
+                x:Name="BtnBorrar"
+                Grid.Column="1"
+                BackgroundColor="Red"
+                BorderColor="Black"
+                BorderWidth="2"
+                Clicked="BtnBorrar_Clicked"
+                CornerRadius="15"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="Borrar"
+                TextColor="White"
+                VerticalOptions="Center" 
+                Padding="50,0"/>
+        </Grid>
     </Grid>
 
 </ContentPage>
