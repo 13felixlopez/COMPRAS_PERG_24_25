@@ -85,13 +85,33 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\COMPRAS_PERG_24_25\COMPRAS_PERG_24_25.csproj">
       <Project>{555833A6-B33C-4902-B39C-71CB908EDDC8}</Project>
       <Name>COMPRAS_PERG_24_25</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\Calculadora.png">
+      <CustomToolNamespace>MSBuild:UpdateGeneratedFiles</CustomToolNamespace>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-hdpi\Calculadora.png">
+      <CustomToolNamespace>MSBuild:UpdateGeneratedFiles</CustomToolNamespace>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-mdpi\Calculadora.png">
+      <CustomToolNamespace>MSBuild:UpdateGeneratedFiles</CustomToolNamespace>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xhdpi\Calculadora.png">
+      <CustomToolNamespace>MSBuild:UpdateGeneratedFiles</CustomToolNamespace>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Calculadora.png">
+      <CustomToolNamespace>MSBuild:UpdateGeneratedFiles</CustomToolNamespace>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Calculadora.png">
+      <CustomToolNamespace>MSBuild:UpdateGeneratedFiles</CustomToolNamespace>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

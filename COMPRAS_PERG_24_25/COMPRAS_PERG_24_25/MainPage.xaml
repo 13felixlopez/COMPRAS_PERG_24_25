@@ -4,8 +4,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <Grid RowDefinitions="*,60">
-        <ScrollView Margin="5,0">
+    <Grid RowDefinitions="80,1,*,60" RowSpacing="0">
+        <Grid ColumnDefinitions="70,*" BackgroundColor="White">
+            <Image Source="Logo.png" Aspect="Fill" Margin="5,5,-15,5"/>
+            <Label Grid.Column="1" Text="Compras Pergamino" FontAttributes="Bold" FontSize="20" TextColor="Black"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </Grid>
+        <BoxView Grid.Row="1" Margin="0,-8,0,8" BackgroundColor="Black" HeightRequest="2" WidthRequest="500"/>
+        <ScrollView Grid.Row="2" Margin="5,0">
             <Grid
                 BackgroundColor="Beige"
                 RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,AUTO"
@@ -24,7 +30,9 @@
                         FontAttributes="Bold"
                         FontSize="18"
                         Keyboard="Numeric"
-                        Text="0,44"
+                        Text="44.00%"
+                        Unfocused="TxtRedimiento_Unfocused"
+                        Focused="TxtRedimiento_Focused"
                         TextChanged="TxtRedimiento_TextChanged" />
                 </Grid>
                 <Grid
@@ -339,7 +347,7 @@
             </Grid>
         </ScrollView>
         <Grid
-            Grid.Row="1"
+            Grid.Row="3"
             Margin="5"
             Padding="0,-40"
             ColumnDefinitions="*,*">
@@ -351,7 +359,7 @@
                 Clicked="BtnCalcular_Clicked"
                 CornerRadius="15"
                 FontAttributes="Bold"
-                FontSize="18"
+                FontSize="15"
                 HorizontalOptions="Center"
                 Text="Calcular"
                 TextColor="White"

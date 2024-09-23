@@ -6,11 +6,11 @@ using Android.App;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("COMPRAS_PERG_24_25.Android")]
+[assembly: AssemblyTitle("COMPRAS_PERG_24_25")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("COMPRAS_PERG_24_25.Android")]
+[assembly: AssemblyCompany("ofi")]
+[assembly: AssemblyProduct("COMPRAS_PERG_24_25")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

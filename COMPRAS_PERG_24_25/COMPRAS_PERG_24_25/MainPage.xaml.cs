@@ -8,6 +8,7 @@ namespace COMPRAS_PERG_24_25
         double precioBruto = 0;
         double precio, IR = 0.015, Bolsagro = 0.0015, PTO = 0.001, FTDC, Reintegro = 0.015;
 
+        private bool isUpdating = false;  // Para evitar bucles infinitos
 
         public MainPage()
         {
@@ -51,6 +52,29 @@ namespace COMPRAS_PERG_24_25
             // Asignar la lista al Picker
             PProducto.ItemsSource = tiposCafe;
         }
+
+        private void TxtRedimiento_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (double.TryParse(TxtRedimiento.Text, out double porcentaje))
+            {
+                isUpdating = true;
+                // Mostrar el valor como porcentaje al perder el foco (44.00 -> 44.00%)
+                TxtRedimiento.Text = porcentaje.ToString("N2") + "%";
+                isUpdating = false;
+            }
+        }
+
+        private void TxtRedimiento_Focused(object sender, FocusEventArgs e)
+        {
+            if (TxtRedimiento.Text.Contains("%"))
+            {
+                isUpdating = true;
+                // Eliminar el símbolo '%' para permitir la edición
+                TxtRedimiento.Text = TxtRedimiento.Text.Replace("%", "").Trim();
+                isUpdating = false;
+            }
+        }
+
         private void CalcularPrecioBruto()
         {
             // Obtener el valor seleccionado del Picker
@@ -94,18 +118,33 @@ namespace COMPRAS_PERG_24_25
         }
         private void TxtRedimiento_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CalcularFTDC();
+            if (isUpdating) return;
+
+            if (double.TryParse(e.NewTextValue, out double porcentaje))
+            {
+                // No hacemos nada aquí con el símbolo %, solo validamos que el valor sea numérico
+            }
+            else
+            {
+                // Si el valor no es válido, puede que quieras manejar el error o limpiar el texto
+                TxtRedimiento.Text = "";
+            }
         }
+        // Método para realizar el cálculo utilizando el valor decimal
         private void CalcularFTDC()
         {
-            if (double.TryParse(TxtRedimiento.Text, out double rendimiento))
+            string inputText = TxtRedimiento.Text.Replace("%", "");  // Eliminar el símbolo '%' para el cálculo
+
+            if (double.TryParse(inputText, out double porcentaje))
             {
-                // Realizar el cálculo del FTDC solo si el rendimiento es válido
+                double rendimiento = porcentaje / 100;  // Convertir el porcentaje a su valor decimal (44.00% -> 0.44)
+
+                // Realizar el cálculo del FTDC
                 FTDC = (4 * rendimiento / 46) * 36.6243;
             }
             else
             {
-                // Si el texto es inválido o nulo, asignar cadena vacía al Label
+                // Si el texto es inválido o nulo, asignar 0 al FTDC
                 FTDC = 0;
             }
         }
